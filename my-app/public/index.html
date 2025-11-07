@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>True Crime Narrator - Text to Speech</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🎙️ True Crime Narrator</h1>
+      <p class="subtitle">Convert your scripts into high-quality audio with AI voices</p>
+    </header>
+
+    <main>
+      <div class="input-section">
+        <h2>Input Your Text</h2>
+        
+        <!-- Text Area Input -->
+        <div class="input-group">
+          <label for="textInput">Paste your script here:</label>
+          <textarea 
+            id="textInput" 
+            placeholder="Enter your true crime script, transcript, or any long-form text here..."
+            rows="10"
+          ></textarea>
+          <div class="char-count">
+            <span id="charCount">0</span> characters
+          </div>
+        </div>
+
+        <!-- OR Divider -->
+        <div class="divider">
+          <span>OR</span>
+        </div>
+
+        <!-- File Upload -->
+        <div class="input-group">
+          <label for="fileInput">Upload a text file:</label>
+          <div class="file-upload">
+            <input 
+              type="file" 
+              id="fileInput" 
+              accept=".txt"
+              style="display: none;"
+            />
+            <button type="button" class="btn-secondary" onclick="document.getElementById('fileInput').click()">
+              📁 Choose File
+            </button>
+            <span id="fileName" class="file-name">No file chosen</span>
+          </div>
+        </div>
+
+        <!-- Voice Selection -->
+        <div class="input-group">
+          <label for="voiceSelect">Select Voice:</label>
+          <select id="voiceSelect" class="voice-select">
+            <option value="">Loading voices...</option>
+          </select>
+        </div>
+
+        <!-- Generate Button -->
+        <button id="generateBtn" class="btn-primary" onclick="generateAudio()">
+          🎬 Generate Audio
+        </button>
+      </div>
+
+      <!-- Status Section -->
+      <div id="statusSection" class="status-section" style="display: none;">
+        <div class="status-content">
+          <div class="spinner"></div>
+          <h3 id="statusTitle">Processing...</h3>
+          <p id="statusMessage">Please wait while we generate your audio. This may take a few minutes for long texts.</p>
+          <div class="progress-info">
+            <span id="progressText"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result Section -->
+      <div id="resultSection" class="result-section" style="display: none;">
+        <h2>✅ Audio Generated Successfully!</h2>
+        <p id="resultMessage"></p>
+        
+        <!-- Audio Player -->
+        <div class="audio-player-container">
+          <audio id="audioPlayer" controls>
+            <source id="audioSource" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+
+        <!-- Download Button -->
+        <a id="downloadLink" class="btn-primary download-btn" download>
+          ⬇️ Download Audio File
+        </a>
+
+        <!-- Generate Another Button -->
+        <button class="btn-secondary" onclick="resetForm()">
+          🔄 Generate Another
+        </button>
+      </div>
+    </main>
+
+    <footer>
+      <p>True Crime Narrator © 2025 | Powered by Hugging Face AI</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

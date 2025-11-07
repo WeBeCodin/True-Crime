@@ -1,2 +1,1 @@
-export * from './userController';
-export * from './productController';
+export { AudioController } from './audioController';
